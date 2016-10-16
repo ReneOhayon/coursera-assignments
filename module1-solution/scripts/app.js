@@ -10,14 +10,17 @@ LunchItemCounterController.$inject= ['$scope'];
 function LunchItemCounterController($scope){
   $scope.lunchItems = "";
   $scope.message = "";
+  $scope.messageClass = "has-success";
 
   $scope.countItems = function () {
     var str = $scope.lunchItems;
     var arrayOfStrings = str.split(",");
     var len = getCount(arrayOfStrings);
-
+    $scope.messageClass = "has-success";
+    
     if(len==0){
       $scope.message = "Please enter data first";
+      $scope.messageClass = "has-error";
     }else if (len > 3){
       $scope.message = "Too Much!!";
     }else{
